@@ -24,14 +24,14 @@ namespace Third
     {
 
         List<string> products;
-        string language = "";
+        string language = ""; // текущий язык
 
         public MainWindow()
         {
-            CultureInfo culture = Thread.CurrentThread.CurrentCulture;
-            language = culture.IetfLanguageTag.Substring(0, 2);
+            CultureInfo culture = Thread.CurrentThread.CurrentCulture; // получение текущего языка
+            language = culture.IetfLanguageTag.Substring(0, 2); // выбор из строки типа ru-RU первых двух символов
             InitializeComponent();
-            if (language == "en")
+            if (language == "en") // если текущий язык английский, то перевести все названия на английский
             {
                 firstLabel.Content = "Product #1";
                 secondLabel.Content = "Product #2";
@@ -96,9 +96,9 @@ namespace Third
             MessageBox.Show(productsString);
         }
 
-        private void ChangeLanguage(object sender, RoutedEventArgs e)
+        private void ChangeLanguage(object sender, RoutedEventArgs e) // кнопка смены языка
         {
-            if (language == "ru")
+            if (language == "ru") // если текущий язык русский, то поменять на английский и перевести названия
             {
                 language = "en";
                 firstLabel.Content = "Product #1";
@@ -115,7 +115,7 @@ namespace Third
                 changeLanguageButton.Content = "Change language";
 
             }
-            else
+            else // если текущий язык английский, то поменять на русский и перевести названия
             {
                 language = "ru";
                 firstLabel.Content = "Товар #1";
